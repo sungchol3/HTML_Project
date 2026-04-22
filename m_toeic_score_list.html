@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
 
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
             color: var(--text-dark);
             background: #fff;
         }
@@ -272,66 +272,11 @@
                         <th scope="col">점수 / 수험번호</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="date-cell">2026.04.12(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 565 (LC 340, RC 225)</p>
-                            <p class="number">수험번호 : 134648</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="date-cell">2026.03.15(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 540 (LC 330, RC 210)</p>
-                            <p class="number">수험번호 : 146195</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="date-cell">2026.01.25(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 585 (LC 355, RC 230)</p>
-                            <p class="number">수험번호 : 137870</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="date-cell">2025.12.28(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 620 (LC 355, RC 265)</p>
-                            <p class="number">수험번호 : 159400</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="date-cell">2025.11.09(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 620 (LC 360, RC 260)</p>
-                            <p class="number">수험번호 : 131198</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="date-cell">2025.08.10(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 620 (LC 360, RC 260)</p>
-                            <p class="number">수험번호 : 139849</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="date-cell">2025.03.30(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 515 (LC 315, RC 200)</p>
-                            <p class="number">수험번호 : 175451</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="date-cell">2025.02.09(일)</td>
-                        <td class="result-cell">
-                            <p class="total">Total 545 (LC 325, RC 220)</p>
-                            <p class="number">수험번호 : 138808</p>
-                        </td>
-                    </tr>
+                <tbody id="score-data">
                 </tbody>
             </table>
         </section>
     </div>
 </body>
+<script src="m_toeic_score_list.js"></script>
 </html>
