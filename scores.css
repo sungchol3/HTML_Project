@@ -1,0 +1,100 @@
+.score-top-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: stretch;
+}
+
+.score-circles {
+    width: 380px;
+    flex-shrink: 0;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.circle {
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+}
+
+.circle.side {
+    width: 100px;
+    height: 100px;
+    background-color: #005bc4;
+    font-size: 14px;
+}
+
+.circle.side span:first-child {
+    opacity: 0.5;
+}
+
+.circle.main {
+    width: 150px;
+    height: 150px;
+    background-color: #0064d2;
+    font-size: 18px;
+    margin: 0 -20px;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.circle .score-val {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.circle.main .score-val {
+    font-size: 32px;
+}
+
+.chart-section {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.chart-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    width: 100%;
+    height: 340px;
+    position: relative;
+}
+
+.graph-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.y-axis-label {
+    font-size: 13px;
+    fill: #9a9a9a;
+}
+
+.x-axis-label {
+    font-size: 13px;
+    fill: #7f7f7f;
+}
+
+.point-score-label {
+    font-size: 18px;
+    font-weight: 700;
+    fill: #2f2f2f;
+}
+
+.point-detail-label {
+    font-size: 16px;
+    fill: #5a5a5a;
+}

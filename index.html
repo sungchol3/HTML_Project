@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적확인 / 성적표발급</title>
+    <style>
+        :root {
+            --blue: #1670df;
+            --text: #222;
+            --muted: #666;
+            --line: #e8e8e8;
+            --header-gray: #f7f7f7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            /*font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;*/
+            font-family: 'Segoe UI', 'Arial', 'sans-serif';
+            color: var(--text);
+            background: #fff;
+        }
+
+        .topbar {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .topbar-inner {
+            max-width: 1180px;
+            height: 70px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px 6px 50px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 400;
+        }
+
+        .user-chip {
+            background: #fff;
+            color: #333;
+            border-radius: 20px;
+            padding: 8px 14px;
+            font-size: 12px;
+        }
+
+        .gnb {
+            max-width: 1180px;
+            height: 55px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .gnb > div {
+            flex: 1;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .topbar-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.16);
+            height: 0;
+            margin: 0;
+        }
+
+        .breadcrumb {
+            border-top: 1px solid #dfe7f2;
+            border-bottom: 1px solid #e9edf3;
+            background: #fff;
+        }
+
+        .breadcrumb-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 15px;
+        }
+
+        .crumb {
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+            padding: 0 14px;
+            border-right: 1px solid #e8ecf1;
+            color: #4f5561;
+            background: #fff;
+        }
+
+        .crumb.home {
+            width: 42px;
+            justify-content: center;
+            padding: 0;
+            font-size: 14px;
+            color: #9aa3b0;
+            border-left: 1px solid #e8ecf1;
+        }
+
+        .crumb.home svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+
+        .crumb.dropdown {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 221px;
+            gap: 8px;
+        }
+
+        .crumb.dropdown::after {
+            content: "▼";
+            font-size: 8px;
+            color: #8f98a4;
+            transform: scale(0.9, 0.8);
+        }
+
+        .crumb.active {
+            color: #2f72c8;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 34px 0 50px;
+            font-family: 'Segoe UI', 'Arial', 'sans-serif';
+        }
+
+        h1 {
+            text-align: center;
+            margin: 8px 0 52px;
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 32px;   
+        }
+
+        .section-title {
+            margin: 0 0 10px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .score-table-wrap {
+            width: 1100px;
+            border-top: 2px solid #666;
+            border-bottom: 1px solid var(--line);
+            margin: 0 auto;
+        }
+
+        table {
+            width: 1100px;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 0 auto;
+        }
+
+        thead th {
+            background: var(--header-gray);
+            color: #444;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: center;
+            height: 47.5px;
+        }
+
+        tbody td {
+            border-top: 1px solid var(--line);
+            text-align: center;
+            height: 57px;
+            font-size: 15px;
+            font-weight: 400;
+            color: #333;
+        }
+
+        td.score-cell {
+            color: #1670df;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .btn-detail {
+            border: 1px solid #d8d8d8;
+            background: #fafafa;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #333;
+            padding: 8px 14px;
+            cursor: pointer;
+        }
+
+        .notice {
+            margin: 22px 0 20px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            list-style: none;
+            padding: 0;
+        }
+
+        .notice li::before {
+            content: "· ";
+        }
+
+        .bottom-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .btn {
+            min-width: 118px;
+            height: 42px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid #cdd9ea;
+            background: #fff;
+            color: #3776b8;
+        }
+
+        .btn.primary {
+            background: #2a74ce;
+            border-color: #2a74ce;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="logo">*toeic.</div>
+            <div class="user-chip">sungchol3님</div>
+        </div>
+        <hr class="topbar-divider">
+        <nav class="gnb">
+            <div>시험접수</div>
+            <div>성적확인</div>
+            <div>시험소개</div>
+            <div>활용현황</div>
+            <div>수험자가이드</div>
+            <div>시험준비</div>
+            <div>토익스토리</div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-inner">
+            <div class="crumb home">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 11L12 2L23 11" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 11V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V11" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="crumb dropdown">성적확인</div>
+            <div class="crumb dropdown">성적확인/성적표발급</div>
+            <div class="crumb dropdown active">성적확인/성적표발급</div>
+        </div>
+    </div>
+
+    <main class="container">
+        <h1>성적확인 / 성적표발급</h1>
+
+        <h2 class="section-title">전체성적</h2>
+        <div class="score-table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 200px;">시험</th>
+                        <th style="width: 180px;">시험일</th>
+                        <th style="width: 175px;">수험번호</th>
+                        <th style="width: 395px;">성적</th>
+                        <th style="width: 150px;">성적표발급</th>
+                    </tr>
+                </thead>
+                <tbody id="score-table-body" data-detail-page="toeic.html"></tbody>
+            </table>
+        </div>
+
+        <ul class="notice">
+            <li>성적표는 PDF 파일로 다운로드받을 수 있습니다.</li>
+            <li>성적표 출력은 Windows 환경에서만 가능합니다(MacOS 환경 미지원).</li>
+            <li>성적 유효기간은 시험일로부터 2년 내 해당 시험성적까지 입니다.</li>
+            <li>성적표 발급은 성적 유효기간 내에만 가능합니다.</li>
+        </ul>
+
+        <div class="bottom-actions">
+            <button class="btn">시험접수</button>
+            <button class="btn primary">성적표 발급 내역</button>
+        </div>
+    </main>
+</body>
+<script src="toeic_score_list.js"></script>
+</html>

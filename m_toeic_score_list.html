@@ -1,0 +1,337 @@
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적확인</title>
+    <style>
+        :root {
+            --brand-blue: #1670df;
+            --text-dark: #222;
+            --text-muted: #595959;
+            --line: #e8e8e8;
+            --light-gray: #f3f3f3;
+            --score-blue: #2571c7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .app {
+            max-width: 540px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: #fff;
+        }
+
+        .top-bar {
+            height: 62px;
+            background: var(--brand-blue);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 14px;
+            color: #fff;
+            position: relative;
+        }
+
+        .logo-left {
+            background: #fff;
+            color: #0f58ba;
+            border-radius: 16px;
+            padding: 8px 12px;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-left img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .logo-center {
+            width: 81px;
+            height: 22px;
+            background-image: url(https://imagesisa.ybmnet.co.kr/platform/m_exam_ybmnet_co_kr/common/logo_TOEIC.svg);
+            background-size: 81px 22px;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block;
+            text-indent: -9999px;
+            overflow: hidden;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .menu-icon {
+            width: 28px;
+            height: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            border-radius: 2px;
+            background: #fff;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin: 22px 0 18px;
+        }
+
+        .notice {
+            margin: 0;
+            background: var(--light-gray);
+            color: #3f3f3f;
+            font-size: 14px;
+            line-height: 1.45;
+            padding: 22px 18px;
+            letter-spacing: -0.4px;
+        }
+
+        .score-list {
+            margin: 26px 20px 0;
+            border-top: 2px solid #9d9d9d;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .score-table thead th {
+            background: var(--light-gray);
+            color: #3a3a3a;
+            font-weight: 700;
+            text-align: center;
+            padding: 12px 10px;
+            font-size: 15px;
+        }
+
+        .score-table thead th:first-child {
+            width: 42%;
+        }
+
+        .score-table thead th:last-child {
+            width: 58%;
+        }
+
+        .score-table tbody tr {
+            border-top: 1px solid var(--line);
+        }
+
+        .score-table tbody tr:first-child {
+            border-top: none;
+        }
+
+        .score-table td {
+            padding: 14px 4px;
+            vertical-align: middle;
+        }
+
+        .date-cell {
+            text-align: center;
+            font-size: 15px;
+            color: #333;
+            letter-spacing: -0.3px;
+        }
+
+        .result-cell {
+            text-align: center;
+            line-height: 1.38;
+        }
+
+        .result-cell .total {
+            margin: 0;
+            color: var(--score-blue);
+            font-weight: 800;
+            font-size: 19px;
+            letter-spacing: -0.4px;
+        }
+
+        .result-cell .number {
+            margin: 2px 0 0;
+            color: var(--text-muted);
+            font-size: 16px;
+            letter-spacing: -0.25px;
+        }
+
+        @media (max-width: 560px) {
+            .top-bar {
+                height: 56px;
+            }
+
+            .logo-left {
+                font-size: 13px;
+                padding: 7px 11px;
+            }
+
+            .logo-left img {
+                width: 14px;
+                height: 14px;
+            }
+
+            .logo-center {
+                width: 81px;
+                height: 22px;
+                background-size: 81px 22px;
+            }
+
+            .menu-icon {
+                width: 24px;
+                height: 18px;
+            }
+
+            .menu-icon span {
+                height: 2.5px;
+            }
+
+            .page-title {
+                font-size: 18px;
+                margin: 18px 0 14px;
+            }
+
+            .notice {
+                font-size: 14px;
+                padding: 14px 16px;
+            }
+
+            .score-list {
+                margin: 16px 14px 0;
+            }
+
+            .score-table thead th {
+                font-size: 15px;
+            }
+
+            .score-table td {
+                padding: 14px 2px;
+            }
+
+            .date-cell {
+                font-size: 15px;
+            }
+
+            .result-cell .total {
+                font-size: 15px;
+            }
+
+            .result-cell .number {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="top-bar">
+            <div class="logo-left">
+                <img src="YBM_logo(upload).png" alt="YBM 로고">
+                <span>와이비엠</span>
+            </div>
+            <a class="logo-center" href="https://m.exam.toeic.co.kr" aria-label="TOEIC 홈">TOEIC</a>
+            <div class="menu-icon" aria-label="메뉴">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <h1 class="page-title">성적확인</h1>
+        <p class="notice">성적 유효기간은 시험일로부터 2년 뒤 해당 시험일까지 입니다.</p>
+
+        <section class="score-list" aria-label="점수 목록">
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th scope="col">일자</th>
+                        <th scope="col">점수 / 수험번호</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="date-cell">2026.04.12(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 565 (LC 340, RC 225)</p>
+                            <p class="number">수험번호 : 134648</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">2026.03.15(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 540 (LC 330, RC 210)</p>
+                            <p class="number">수험번호 : 146195</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">2026.01.25(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 585 (LC 355, RC 230)</p>
+                            <p class="number">수험번호 : 137870</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">2025.12.28(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 620 (LC 355, RC 265)</p>
+                            <p class="number">수험번호 : 159400</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">2025.11.09(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 620 (LC 360, RC 260)</p>
+                            <p class="number">수험번호 : 131198</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">2025.08.10(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 620 (LC 360, RC 260)</p>
+                            <p class="number">수험번호 : 139849</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">2025.03.30(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 515 (LC 315, RC 200)</p>
+                            <p class="number">수험번호 : 175451</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="date-cell">2025.02.09(일)</td>
+                        <td class="result-cell">
+                            <p class="total">Total 545 (LC 325, RC 220)</p>
+                            <p class="number">수험번호 : 138808</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

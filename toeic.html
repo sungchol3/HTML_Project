@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적확인 레이아웃</title>
+    <link rel="stylesheet" href="scores.css">
+    <style>
+        body {
+            font-family: 'Malgun Gothic', dotum, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .score-info-table {
+            flex: 1;           /* 1200px 중 왼쪽 380px을 제외한 나머지 모든 너비 차지 */
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;      /* 내부 요소 때문에 박스가 삐져나가는 것 방지 */
+        }
+
+        /* 테이블 내부 행과 콘텐츠 */
+        .info-row {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            min-height: 80px;
+        }
+
+        .info-label {
+            width: 240px;      /* 필요에 따라 왼쪽 회색칸 너비도 조절 가능 */
+            flex-shrink: 0;    /* 회색칸 너비 고정 */
+            background-color: #f2f2f2;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+        }
+
+        .info-content {
+            flex: 1;           /* 흰색 칸이 오른쪽 끝까지 늘어남 */
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        /* 버튼 스타일 정의 */
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .btn-blue-sm {
+            background-color: #0064d2;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .btn-gray-sm {
+            background-color: #f8f8f8;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* 큰 출력 버튼 */
+        .btn-print-large {
+            background-color: #0064d2;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .btn-print-large svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* 최고 성적 배너 */
+        .best-score-banner {
+            background-color: #f8f8f8;
+            border: 1px solid #eee;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .best-score-banner b {
+            color: #333;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>성적확인 / 성적표발급</h1>
+
+    <div class="score-top-section">
+        <div class="score-circles">
+            <div class="circle side">
+                <span>LC</span>
+                <span class="score-val" id="latest-lc">0</span>
+            </div>
+            <div class="circle main">
+                <span>TOTAL</span>
+                <span class="score-val" id="latest-total">0</span>
+            </div>
+            <div class="circle side">
+                <span>RC</span>
+                <span class="score-val" id="latest-rc">0</span>
+            </div>
+        </div>
+
+        <div class="score-info-table">
+            <div class="info-row">
+                <div class="info-label">성적표 최초발급</div>
+                <div class="info-content">온라인출력</div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">온라인 출력 가능 매수</div>
+                <div class="info-content">
+                    출력 가능 <span style="color: #0064d2; font-weight: bold; margin: 0 4px;">1</span>매
+                    <div class="btn-group">
+                        <button class="btn-blue-sm">성적표 발급 추가 신청</button>
+                        <button class="btn-gray-sm">통합 성적표 발급</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-label">성적표 출력</div>
+                <div class="info-content">
+                    <button class="btn-print-large">
+                        <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+                        출력
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="best-score-banner">
+        🏅 하성철님이 보유한 TOEIC® 최고 성적은 <b id="best-total">0점</b>입니다.
+        <button style="font-size: 11px; margin-left: 5px;">자세히보기</button>
+    </div>
+
+    <div class="chart-section">
+        <div class="chart-title">하성철님의 최근 5회차 시험 성적 추이</div>
+        <div class="chart-container" id="chart-container"></div>
+    </div>
+</div>
+
+<script src="scores.js"></script>
+</body>
+</html>
