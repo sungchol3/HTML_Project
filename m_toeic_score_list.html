@@ -12,6 +12,7 @@
             --line: #e8e8e8;
             --light-gray: #f3f3f3;
             --score-blue: #2571c7;
+            --color-gray: #868B94;
         }
 
         * {
@@ -111,8 +112,13 @@
             letter-spacing: -0.4px;
         }
 
+        .detail {
+            padding: 10px 16px;
+        }
+
         .score-list {
-            margin: 26px 20px 0;
+            position: relative;
+            margin-top: 25px;
             border-top: 2px solid #9d9d9d;
             border-bottom: 1px solid var(--line);
         }
@@ -133,11 +139,11 @@
         }
 
         .score-table thead th:first-child {
-            width: 42%;
+            width: 35%;
         }
 
         .score-table thead th:last-child {
-            width: 58%;
+            width: 65%;
         }
 
         .score-table tbody tr {
@@ -149,19 +155,19 @@
         }
 
         .score-table td {
-            padding: 14px 4px;
+            padding: 10px 0;
+            line-height: 22px;
             vertical-align: middle;
+            text-align: center;
         }
 
         .date-cell {
-            text-align: center;
             font-size: 15px;
             color: #333;
             letter-spacing: -0.3px;
         }
 
         .result-cell {
-            text-align: center;
             line-height: 1.38;
         }
 
@@ -178,6 +184,13 @@
             color: var(--text-muted);
             font-size: 16px;
             letter-spacing: -0.25px;
+        }
+
+        .inline-note {
+            font-size: 12px;
+            line-height: 20px;
+            color: var(--color-gray);
+            margin-top: 10px;
         }
 
         @media (max-width: 560px) {
@@ -221,15 +234,17 @@
             }
 
             .score-list {
-                margin: 16px 14px 0;
+                margin-top: 25px;
             }
 
             .score-table thead th {
                 font-size: 15px;
+                height: 38px;
             }
 
             .score-table td {
-                padding: 14px 2px;
+                padding: 10px 0;
+                line-height: 22px;
             }
 
             .date-cell {
@@ -263,19 +278,21 @@
 
         <h1 class="page-title">성적확인</h1>
         <p class="notice">성적 유효기간은 시험일로부터 2년 뒤 해당 시험일까지 입니다.</p>
-
-        <section class="score-list" aria-label="점수 목록">
-            <table class="score-table">
-                <thead>
-                    <tr>
-                        <th scope="col">일자</th>
-                        <th scope="col">점수 / 수험번호</th>
-                    </tr>
-                </thead>
-                <tbody id="score-data">
-                </tbody>
-            </table>
-        </section>
+        <div class="detail">
+            <section class="score-list" aria-label="점수 목록">
+                <table class="score-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">일자</th>
+                            <th scope="col">점수 / 수험번호</th>
+                        </tr>
+                    </thead>
+                    <tbody id="score-data">
+                    </tbody>
+                </table>
+            </section>
+            <p class="inline-note">성적표 발급은 홈페이지(PC)에서 가능합니다.</p>
+        </div>
     </div>
 </body>
 <script src="m_toeic_score_list.js"></script>
