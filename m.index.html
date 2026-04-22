@@ -260,6 +260,12 @@
             }
         }
     </style>
+    <script>
+        // Redirect to computer version if accessed on a non-mobile device
+        if (!/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+            window.location.href = "./index.html";
+        }
+    </script>
 </head>
 <body>
     <div class="app">

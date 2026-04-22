@@ -244,6 +244,12 @@
             color: #fff;
         }
     </style>
+    <script>
+        // Redirect to mobile version if accessed on a mobile device
+        if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+            window.location.href = "./m.index.html";
+        }
+    </script>
 </head>
 <body>
     <header class="topbar">
